@@ -1,0 +1,204 @@
+#top-lay {
+    background: linear-gradient(rgba(0, 0, 0, .65) 5%, rgba(0, 0, 0, .04) 35%);
+    height: 130px;
+    width: calc(100% - 0px);
+    padding: 50px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+header {
+    height: 130px;
+    width: calc(100% - 0px);
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nav-btn {
+    width: 52px;
+    height: 52px;
+    z-index: 9;
+    position: relative;
+    border-radius: 100px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    mix-blend-mode: difference;
+
+    &::before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 100px;
+        background: transparent;
+        z-index: 1;
+        content: "";
+        top: 0;
+        left: 0;
+    }
+
+    &:hover {
+        background: #fff;
+        transition: all .5s ease;
+
+    }
+
+    &.active {
+        // background: #fff;
+        // transition: all .25s ease;
+
+        #nav-open {
+            mix-blend-mode: difference;
+
+            &::before {
+                transform: translateX(-100%);
+                opacity: 0;
+                transition: all .5s ease;
+            }
+
+            &::after {
+                transform: translateX(100%);
+                opacity: 0;
+                transition: all .5s ease;
+            }
+        }
+
+        #nav-close {
+            mix-blend-mode: difference;
+
+            &::before {
+                transition: .5s all .5s ease;
+                transform: rotate(44deg) translateY(4px) translateX(2px);
+                opacity: 1;
+            }
+
+            &::after {
+                transition: .5s all .5s ease;
+                transform: rotate(-45deg) translateY(-4px) translateX(3px);
+                opacity: 1;
+            }
+        }
+
+    }
+
+    #nav-open {
+        position: absolute;
+        width: 27px;
+        height: 27px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+
+        &::before {
+            position: absolute;
+            width: 27px;
+            height: 2px;
+            background: #fff;
+            content: "";
+            transition: .5s all .5s ease;
+            top: 8px;
+            border: 1px solid #fff;
+        }
+
+        &::after {
+            position: absolute;
+            width: 27px;
+            height: 2px;
+            background: #fff;
+            border: 1px solid #fff;
+            content: "";
+            bottom: 8px;
+            transition: .5s all .5s ease;
+        }
+    }
+
+    #nav-close {
+        position: absolute;
+        width: 27px;
+        height: 27px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        // overflow: hidden;
+
+        &::before {
+            position: absolute;
+            width: 27px;
+            height: 2px;
+            background: #fff;
+            content: "";
+            border: 1px solid #fff;
+            transition: all .5s ease;
+            transform: rotate(44deg) translateY(4px) translateX(-45px);
+            top: 8px;
+            opacity: 1;
+        }
+
+        &::after {
+            position: absolute;
+            width: 27px;
+            height: 2px;
+            background: #fff;
+            border: 1px solid #fff;
+            content: "";
+            bottom: 8px;
+            opacity: 1;
+            transform: rotate(-45deg) translateY(-4px) translateX(45px);
+            transition: all .5s ease;
+        }
+    }
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: translateY(130%);
+    position: fixed;
+    z-index: 9;
+    transition: all 1.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    -webkit-transition: all 1.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    -moz-transition: all 1.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+
+    &.active {
+        transform: translateY(0%);
+
+        #nav-lay {
+            // transition: .75s all .15s cubic-bezier(0, 0.6, 1, 0.09);
+            top: 15px;
+            // top: -70px;
+        }
+    }
+
+    #nav-lay {
+        position: absolute;
+        left: 0;
+        width: 110%;
+        transform: rotate(0.4deg);
+        height: 300px;
+        background: #fff;
+        z-index: -1;
+        top: -100px;
+        // top: 15px;
+        transition: 1.45s all .15s ease-in-out;
+    }
+
+    #nav-target {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        position: absolute;
+        z-index: 9;
+        background: #050505;
+    }
+
+}

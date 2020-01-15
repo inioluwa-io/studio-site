@@ -1,0 +1,37 @@
+#cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    mix-blend-mode: difference;
+    border-radius: 100px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    display: block;
+    z-index: 100;
+    transition: width .25s, height .25s ease;
+}
+
+* {
+    cursor: url('../../images/gatsby-icon.png'), none;
+    // mix-blend-mode: difference;
+    // cursor: none;
+}
+
+#ripple {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(#fd0c2c7a 20%, rgba(0, 0, 255, 0.438));
+    // background: radial-gradient(#0c0c0c, #050505);
+    will-change: transform;
+    mix-blend-mode: difference;
+    border-radius: 300px;
+    filter: blur(32px);
+    pointer-events: none;
+    transform: translate(-255%, -85%);
+    overflow: hidden;
+    display: block;
+    z-index: -1;
+}
