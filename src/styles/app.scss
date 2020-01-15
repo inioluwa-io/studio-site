@@ -1,3 +1,5 @@
+@import './utils/variables.scss';
+
 body {
     background: #050505;
     height: 200vh;
@@ -12,6 +14,7 @@ body {
 html {
     width: 100vw;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #home {
@@ -22,6 +25,10 @@ html {
         transform: translate(-50%, -50%);
         width: 300px;
         padding: 30px;
+        opacity: 0;
+        transition: 1.25s opacity 3s ease;
+        -webkit-transition: 1.25sopacity 3s ease;
+        -moz-transition: 1.25s opacity 3s ease;
 
         sub {
             font-weight: lighter;
@@ -45,4 +52,80 @@ html {
             // color: transparent;
         }
     }
+
+    #sw-up {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        opacity: 0;
+        transform: translateX(-50%);
+
+        p {
+            font-size: 14px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        #sw-bar {
+            width: 10%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            text-align: center;
+            background: #fff;
+            animation: expand 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite alternate;
+        }
+    }
 }
+
+// Keyframe animations
+@keyframes expand {
+    from {
+        width: 0%;
+    }
+
+    8% {
+        width: 100%;
+    }
+
+    92% {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+@-webkit-keyframes expand {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+// End key frame animations
+
+// When page loads
+.page-loaded {
+    overflow-y: visible;
+
+    #home {
+        .home-mess {
+            opacity: 1;
+        }
+    }
+
+    #sw-up {
+        transition: .45s all 3.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+        -webkit-transition: .45s all 3.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+        -moz-transition:  .45s all 3.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+        opacity: 1 !important;
+    }
+}
+
+// page load end

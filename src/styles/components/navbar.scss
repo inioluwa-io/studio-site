@@ -1,3 +1,5 @@
+@import '../utils/variables.scss';
+
 #top-lay {
     background: linear-gradient(rgba(0, 0, 0, .65) 5%, rgba(0, 0, 0, .04) 35%);
     height: 130px;
@@ -9,14 +11,18 @@
     top: 0;
 }
 
+#logo {
+    font-size: 2.2rem;
+}
+
 header {
-    height: 130px;
+    height: 75px;
     width: calc(100% - 0px);
     position: fixed;
-    z-index: 999;
+    z-index: 100;
     left: 0;
     top: 0;
-    padding: 50px;
+    padding: 50px 50px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,20 +45,20 @@ header {
         border-radius: 100px;
         background: transparent;
         z-index: 1;
+        mix-blend-mode: difference;
         content: "";
-        top: 0;
-        left: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.5);
+        transition: all .5s ease;
     }
 
     &:hover {
         background: #fff;
         transition: all .5s ease;
-
     }
 
     &.active {
-        // background: #fff;
-        // transition: all .25s ease;
 
         #nav-open {
             mix-blend-mode: difference;
@@ -165,9 +171,9 @@ nav {
     transform: translateY(130%);
     position: fixed;
     z-index: 9;
-    transition: all 1.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
-    -webkit-transition: all 1.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
-    -moz-transition: all 1.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    -webkit-transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    -moz-transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
 
     &.active {
         transform: translateY(0%);
@@ -175,6 +181,7 @@ nav {
         #nav-lay {
             // transition: .75s all .15s cubic-bezier(0, 0.6, 1, 0.09);
             top: 15px;
+            transition: .85s all .15s ease-in-out;
             // top: -70px;
         }
     }
@@ -189,7 +196,7 @@ nav {
         z-index: -1;
         top: -100px;
         // top: 15px;
-        transition: 1.45s all .15s ease-in-out;
+        transition: 1.25s all 0s ease-in-out;
     }
 
     #nav-target {
@@ -199,6 +206,58 @@ nav {
         position: absolute;
         z-index: 9;
         background: #050505;
-    }
 
+        ul#nav-link {
+            margin: 65px 180px 0;
+
+            li {
+                display: block;
+                margin: 50px 0;
+                transform: translateY(15px);
+                opacity: 0;
+                width: fit-content;
+
+                &:hover,
+                &.active {
+
+                    sub {
+                        transition: margin .45s ease;
+                        margin-left: 20px;
+                        color: transparent;
+                    }
+
+                    h3 {
+                        margin-left: 30px;
+                        color: #fff;
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+                }
+
+                sub {
+                    font-weight: bolder;
+                    letter-spacing: 1px;
+                    color: $dimgray;
+                    font-family: 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                }
+
+                h3 {
+                    margin-left: 10px;
+                    text-transform: uppercase;
+                    -webkit-text-stroke-color: #fff;
+                    -webkit-text-stroke-width: 1px;
+                    -moz-text-stroke-color: #fff;
+                    -moz-text-stroke-width: 1px;
+                    color: transparent;
+                    font-size: 4rem;
+                    transition: color .5s, margin .45s ease;
+                    width: fit-content;
+                    height: fit-content;
+                    line-height: 4rem;
+                }
+            }
+        }
+    }
 }

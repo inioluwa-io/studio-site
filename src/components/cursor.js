@@ -12,15 +12,14 @@ const Cursor = () => {
   }
 
   const setMousePosition = e => {
-    // alert(window);
     const mouse = getMousePosition(e)
     const cursor = document.getElementById("cursor")
     const ripple = document.getElementById("ripple")
     cursor.style.left = `${mouse.xAxis}px`
     cursor.style.top = `${mouse.yAxis}px`
+    cursor.style.opacity = `1`
     ripple.style.right = `${(mouse.xAxis/5)}px`
     ripple.style.bottom = `${mouse.yAxis/5}px`
-    // cursor.style.transform = `translate(-50%,-50%)`
   }
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const Cursor = () => {
       document.removeEventListener("mousemove", function(e) {
         setMousePosition(e)
       })
-  })
+  },[setMousePosition, deactivateTapHighlight])
 
   return (
     <>

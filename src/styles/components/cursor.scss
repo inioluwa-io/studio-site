@@ -9,29 +9,77 @@
     transform: translate(-50%, -50%);
     overflow: hidden;
     display: block;
-    z-index: 100;
-    transition: width .25s, height .25s ease;
+    z-index: 200;
+    opacity: 0;
+    transition: width .25s, height .25s, padding .25s, opacity .25s ease;
 }
 
 * {
     cursor: url('../../images/gatsby-icon.png'), none;
-    // mix-blend-mode: difference;
-    // cursor: none;
 }
 
 #ripple {
     position: absolute;
     width: 200px;
+    opacity: 0;
+    right: 120px;
+    bottom: 70px;
     height: 200px;
     background: radial-gradient(#fd0c2c7a 20%, rgba(0, 0, 255, 0.438));
     // background: radial-gradient(#0c0c0c, #050505);
-    will-change: transform;
+    // will-change: transform;
+    transition:  all 1.25s, 1.3s opacity 3.5s  ease;
+    -webkit-transition: all 1.25s, 1.3s opacity 3.5s  ease;
+    -moz-transition: all 1.25s, 1.3s opacity 3.5s  ease;
     mix-blend-mode: difference;
     border-radius: 300px;
     filter: blur(32px);
     pointer-events: none;
-    transform: translate(-255%, -85%);
+    transform: translate(-255%, -90%);
     overflow: hidden;
     display: block;
+    // display: none;
     z-index: -1;
+}
+
+.page-loaded{
+    #ripple{
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 1130px) {
+    #ripple {
+        transform: translate(-200%, -90%);
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #ripple {
+        transform: translate(-150%, -90%);
+    }
+}
+
+@media only screen and (max-width: 826px) {
+    #ripple {
+        transform: translate(-130%, -90%);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #ripple {
+        transform: translate(-100%, -90%);
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    #ripple {
+        transform: translate(-80%, -90%);
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    #ripple {
+        transform: translate(-65%, -90%);
+    }
 }

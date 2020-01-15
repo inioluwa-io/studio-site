@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
 import "../styles/components/navbar.scss"
 import { Link } from "gatsby"
@@ -26,21 +26,66 @@ const Navbar = () => {
   useEffect(() => {
     const navBtn = document.querySelector("#nav-btn")
     const navTarget = document.querySelector("nav")
+    const navLinks = document.querySelectorAll("#nav-target ul#nav-link li")
     let i = 0
     navBtn.addEventListener("click", function() {
+      console.log(i)
       if (i === 0) {
         navBtn.classList.add("active")
         navTarget.classList.add("active")
-        document.querySelector("html").style.overflowY = 'hidden'
+        // intro.style.opacity = "0"
+        document.querySelector("html").style.overflowY = "hidden"
+
+        //animate each navlinks with delay
+        for (let index = 0; index < navLinks.length; index++) {
+          navLinks[index].style.opacity = "1"
+          navLinks[index].style.transition = ` .35s all ${1.75 +
+            index / 4}s ease-in-out`
+          navLinks[index].style.transform = "translateY(0)"
+        }
+
         i++
       } else {
-        navBtn.classList.remove("active")
-        navTarget.classList.remove("active")
-        document.querySelector("html").style.overflowY = 'visible'
+        //animate each navlinks with delay
+        for (let index = navLinks.length - 1; index >= 0; index--) {
+          navLinks[index].style.opacity = "0"
+          navLinks[index].style.transition = ` .35s all ${0 +
+            (navLinks.length - 1 - index) / 4}s ease-in-out`
+          navLinks[index].style.transform = "translateY(15px)"
+        }
+
+        setTimeout(() => {
+          navBtn.classList.remove("active")
+          navTarget.classList.remove("active")
+          // intro.style.opacity = "1"
+          document.querySelector("html").style.overflowY = "visible"
+        }, 1000)
+
         i--
       }
     })
-  })
+
+    return () => {
+      i = 0
+    }
+  }, [])
+
+  // Animate navbar menu links onhover
+  useEffect(() => {
+    const cursor = document.querySelector("#cursor")
+    const navLinks = document.querySelectorAll("#nav-target ul#nav-link li h3")
+    Array.from(navLinks).forEach((item, index) => {
+      navLinks[index].addEventListener("mouseenter", function() {
+        cursor.style.padding = "20px"
+        cursor.style.display = "none"
+      })
+      navLinks[index].addEventListener("mouseout", function() {
+        cursor.style.padding = "0"
+        cursor.style.display = "block"
+      })
+    })
+  }, [])
+
   return (
     <>
       <div id="top-lay"></div>
@@ -56,7 +101,27 @@ const Navbar = () => {
       <nav>
         <div id="nav-lay"></div>
         <div id="nav-target">
-
+          <ul id ="nav-link">
+            <li className="active">
+              <sub>01</sub>
+              <Link to="#">
+                <h3 onClick ={()=>window.location.reload()}>Intro</h3>
+              </Link>
+            </li>
+            <li>
+              <sub>02</sub>
+              <Link to="/">
+                <h3>About</h3>
+              </Link>
+            </li>
+            <li>
+              <sub>03</sub>
+              <Link to="/">
+                <h3>Contact</h3>
+              </Link>
+            </li>
+          </ul>
+          
         </div>
       </nav>
     </>
