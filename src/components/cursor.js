@@ -12,6 +12,10 @@ const Cursor = () => {
   }
 
   const setMousePosition = e => {
+    const random = Math.floor(Math.random() * (360 - 250)) + 250;
+    const width = Math.floor(Math.random() * (250 - 180)) + 180;
+    const height = Math.floor(Math.random() * (230 - 180)) + 180;
+    const borderRadius = Math.floor(Math.random() * (380 - 250)) + 250;
     const mouse = getMousePosition(e)
     const cursor = document.getElementById("cursor")
     const ripple = document.getElementById("ripple")
@@ -20,6 +24,10 @@ const Cursor = () => {
     cursor.style.opacity = `1`
     ripple.style.right = `${(mouse.xAxis/5)}px`
     ripple.style.bottom = `${mouse.yAxis/5}px`
+    ripple.style.filter = `blur(38px) saturate(${random}%)`
+    ripple.style.width = `${width}px`
+    ripple.style.height = `${height}px`
+    ripple.style.borderRadius = `${borderRadius}px`
   }
 
   useEffect(() => {

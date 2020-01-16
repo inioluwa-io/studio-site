@@ -25,7 +25,8 @@
     right: 120px;
     bottom: 70px;
     height: 200px;
-    background: radial-gradient(#fd0c2c7a 20%, rgba(0, 0, 255, 0.438));
+    background: radial-gradient(#ff23407a 30%, rgba(0, 0, 255, 0.438));
+    background: radial-gradient(circle at 80% 137%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     // background: radial-gradient(#0c0c0c, #050505);
     // will-change: transform;
     transition:  all 1.25s, 1.3s opacity 3.5s  ease;
@@ -33,12 +34,14 @@
     -moz-transition: all 1.25s, 1.3s opacity 3.5s  ease;
     mix-blend-mode: difference;
     border-radius: 300px;
-    filter: blur(32px);
+    filter: blur(38px) saturate(200%);
+    -moz-filter: blur(38px) saturate(200%);
+    -webkit-filter: blur(38px) saturate(200%);
     pointer-events: none;
     transform: translate(-255%, -90%);
     overflow: hidden;
     display: block;
-    // display: none;
+    will-change: transform;
     z-index: -1;
 }
 
