@@ -10,16 +10,20 @@ const Navbar = () => {
 
     navBtn.addEventListener("mouseover", function(e) {
       const cursor = document.getElementById("cursor")
-      cursor.style.display = "none"
-      // cursor.style.width = "50px"
-      // cursor.style.height = "50px"
+      // cursor.style.display = "none"
+      cursor.style.width = "50px"
+      cursor.style.height = "50px"
+      cursor.style.border = "1px solid #fff"
+      cursor.style.background = "transparent"
     })
 
     navBtn.addEventListener("mouseout", function(e) {
       const cursor = document.getElementById("cursor")
-      cursor.style.display = "block"
-      // cursor.style.width = "10px"
-      // cursor.style.height = "10px"
+      // cursor.style.display = "block"
+      cursor.style.width = "10px"
+      cursor.style.height = "10px"
+      cursor.style.border = "1px solid transparent"
+      cursor.style.background = "#fff"
     })
   })
 
