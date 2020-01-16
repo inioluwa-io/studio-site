@@ -116,11 +116,11 @@ const Navbar = () => {
     Array.from(navLinks).forEach((item, index) => {
       navLinks[index].addEventListener("mouseenter", function() {
         cursor.style.padding = "20px"
-        cursor.style.display = "none"
+        // cursor.style.display = "none"
       })
       navLinks[index].addEventListener("mouseout", function() {
         cursor.style.padding = "0"
-        cursor.style.display = "block"
+        // cursor.style.display = "block"
       })
     })
   }, [])
