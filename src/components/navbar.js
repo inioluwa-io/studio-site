@@ -4,7 +4,6 @@ import "../styles/components/navbar.scss"
 import { Link } from "gatsby"
 
 const Navbar = () => {
-  let i = 0
   useEffect(() => {
     const navBtn = document.querySelector("#nav-btn")
 
@@ -29,9 +28,31 @@ const Navbar = () => {
 
   // Animate navbar panel
   useEffect(() => {
+    let i = 0
     const navBtn = document.querySelector("#nav-btn")
     const navTarget = document.querySelector("nav")
     const navLinks = document.querySelectorAll("#nav-target ul#nav-link li")
+
+    const navOpen = (index) => {
+      //animate each navlinks with delay
+      for (let index = navLinks.length - 1; index >= 0; index--) {
+        navLinks[index].classList.remove("active")
+        navLinks[index].style.opacity = "0"
+        navLinks[index].style.transition = ` .35s all ${0 +
+          ((navLinks.length - 1 - index) / 4.5)}s ease-in-out`
+        navLinks[index].style.transform = "translateY(15px)"
+      }
+      navLinks[index].classList.add("active")
+
+      setTimeout(() => {
+        navBtn.classList.remove("active")
+        navTarget.classList.remove("active")
+        // intro.style.opacity = "1"
+        document.querySelector("html").style.overflowY = "visible"
+      }, 1000)
+      i = 0
+    }
+
     navBtn.addEventListener("click", function() {
       if (i === 0) {
         navBtn.classList.add("active")
@@ -47,25 +68,8 @@ const Navbar = () => {
             index / 4}s ease-in-out`
           navLinks[index].style.transform = "translateY(0)"
 
-          navLinks[index].addEventListener("click", function() {
-            //animate each navlinks with delay
-            for (let index = navLinks.length - 1; index >= 0; index--) {
-              navLinks[index].classList.remove("active")
-              navLinks[index].style.opacity = "0"
-              navLinks[index].style.transition = ` .35s all ${0 +
-                (navLinks.length - 1 - index) / 4}s ease-in-out`
-              navLinks[index].style.transform = "translateY(15px)"
-            }
-            navLinks[index].classList.add("active")
-
-            setTimeout(() => {
-              navBtn.classList.remove("active")
-              navTarget.classList.remove("active")
-              // intro.style.opacity = "1"
-              document.querySelector("html").style.overflowY = "visible"
-            }, 1000)
-
-            i = 0
+          navLinks[index].addEventListener("click", () => {
+            navOpen(index)
           })
         }
       } else {
@@ -76,10 +80,10 @@ const Navbar = () => {
             (navLinks.length - 1 - index) / 4}s ease-in-out`
           navLinks[index].style.transform = "translateY(15px)"
         }
+        navBtn.classList.remove("active")
+        navTarget.classList.remove("active")
 
         setTimeout(() => {
-          navBtn.classList.remove("active")
-          navTarget.classList.remove("active")
           // intro.style.opacity = "1"
           document.querySelector("html").style.overflowY = "visible"
         }, 1000)
@@ -91,7 +95,7 @@ const Navbar = () => {
     return () => {
       i = 0
     }
-  }, [i])
+  }, [])
 
   // Animate navbar menu links onhover
   useEffect(() => {
@@ -143,9 +147,9 @@ const Navbar = () => {
           <ul id="nav-link">
             <li className="active">
               <sub>01</sub>
-              <Link to="#">
-                <h3 onClick={() => window.location.reload()}>Intro</h3>
-              </Link>
+              <a href="#" onClick={() => window.location.reload()}>
+                <h3>Intro</h3>
+              </a>
             </li>
             <li>
               <sub>02</sub>
@@ -155,9 +159,9 @@ const Navbar = () => {
             </li>
             <li>
               <sub>03</sub>
-              <Link to="#contact">
+              <a href="#contact">
                 <h3>Contact</h3>
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

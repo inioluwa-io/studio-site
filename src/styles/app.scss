@@ -1,8 +1,9 @@
 @import './utils/variables.scss';
+@import './layout/arrow.scss';
 
 body {
     background: #050505;
-    height: 200vh;
+    height: 100vh;
 
     * {
         color: #fff;
@@ -21,6 +22,7 @@ html {
     height: 100vh;
     width: 100%;
     position: relative;
+
     .home-mess {
         position: absolute;
         left: 50%;
@@ -80,6 +82,135 @@ html {
             animation: expand 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite alternate;
         }
     }
+
+    #triangle {
+        transform: translateY(-25px);
+    }
+
+    #contact-icons {
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+        overflow: hidden;
+
+        ol {
+            // height: 0;
+            position: relative;
+            overflow: hidden;
+
+            li {
+                display: block;
+                text-align: center;
+                width: 30px;
+                height: 30px;
+                position: relative;
+                overflow: hidden;
+                margin: 10px 0;
+
+                a {
+                    left: 50%;
+                    top: 50%;
+                    position: absolute;
+                    transform: translate(-50%, 120%);
+                    transition: all .45s ease;
+                }
+            }
+            li:nth-child(3){
+                a{
+                    transition: .45s all .2s ease;
+                }
+            }
+            li:nth-child(2){
+                a{
+                    transition: .45s all .1s ease;
+                }
+            }
+            li:nth-child(1){
+                a{
+                    transition: all .45s ease;
+                }
+            }
+        }
+
+
+
+        &.active {
+            #open-contact {
+                transition: .45s all .45s ease;
+                transform: scale(0.7);
+
+                .plus {
+                    &::before {
+                        transform: translate(-50%, -50%) rotate(-90deg);
+                        transition: all .45s ease;
+                    }
+                }
+            }
+
+            ol {
+                li {
+                    a {
+                        transition: .45s all .75s ease;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                li:nth-child(1) {
+                    a {
+                        transition: .45s all .65s ease;
+                    }
+                }
+
+                li:nth-child(2) {
+                    a {
+                        transition: .45s all .55s ease;
+                    }
+                }
+
+                li:nth-child(3) {
+                    a {
+                        transition: .45s all .45s ease;
+                    }
+                }
+            }
+        }
+    }
+
+    #open-contact {
+        width: 25px;
+        height: 25px;
+        padding: 15px;
+        margin-top: 5px;
+        position: relative;
+        background: transparent;
+        border: none;
+        outline: none;
+        transition: all .45s ease;
+
+        .plus {
+            position: absolute;
+            width: 22px;
+            height: 0px;
+            // background: #fff;
+            border: 1px solid #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            // transform-origin: center center;
+
+            &::before {
+                position: absolute;
+                content: "";
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                height: 22px;
+                width: 0px;
+                border: 1px solid #fff;
+                transition: .45s all .45s ease;
+            }
+        }
+    }
 }
 
 // Keyframe animations
@@ -126,9 +257,17 @@ html {
     #sw-up {
         transition: .45s all 3.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
         -webkit-transition: .45s all 3.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
-        -moz-transition:  .45s all 3.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+        -moz-transition: .45s all 3.85s cubic-bezier(0.82, 0.03, 0.21, 0.99);
         opacity: 1 !important;
     }
 }
 
 // page load end
+
+
+// Responsiveness
+@media only screen and (max-width: 768px) {
+    #home {}
+}
+
+// 

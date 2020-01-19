@@ -1,7 +1,7 @@
 @import '../utils/variables.scss';
 
 #top-lay {
-    background: linear-gradient(rgba(0, 0, 0, .65) 5%, rgba(0, 0, 0, .04) 35%);
+    // background: linear-gradient(rgba(0, 0, 0, .65) 5%, rgba(0, 0, 0, .04) 35%);
     height: 130px;
     width: calc(100% - 0px);
     padding: 50px;
@@ -169,19 +169,22 @@ nav {
     width: 100%;
     height: 100%;
     top: 0;
-    transform: translateY(130%);
+    transform: translateY(230%);
     position: fixed;
     z-index: 9;
-    transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
-    -webkit-transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
-    -moz-transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    transition:1s all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    -webkit-transition: 1s all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+    -moz-transition: 1s all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
 
     &.active {
         transform: translateY(0%);
+        transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+        -webkit-transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
+        -moz-transition: all 1s cubic-bezier(0.82, 0.03, 0.21, 0.99);
 
         #nav-lay {
             // transition: .75s all .15s cubic-bezier(0, 0.6, 1, 0.09);
-            top: 15px;
+            top: -15px;
             transition: .85s all .15s ease-in-out;
             // top: -70px;
         }
@@ -192,10 +195,10 @@ nav {
         left: 0;
         width: 110%;
         transform: rotate(0.4deg);
-        height: 300px;
+        height: 100%;
         background: #fff;
         z-index: -1;
-        top: -100px;
+        top: -100%;
         // top: 15px;
         transition: 1.25s all 0s ease-in-out;
     }
