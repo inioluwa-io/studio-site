@@ -13,7 +13,7 @@ body {
 }
 
 html {
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -31,9 +31,20 @@ html {
         width: 300px;
         padding: 30px;
         opacity: 0;
-        transition: 1.25s opacity 3s ease;
-        -webkit-transition: 1.25sopacity 3s ease;
-        -moz-transition: 1.25s opacity 3s ease;
+        transition: 1.25s opacity ease;
+        -webkit-transition: 1.25s opacity ease;
+        -moz-transition: 1.25s opacity ease;
+        -o-transition: 1.25s opacity ease;
+        -ms-transition: 1.25s opacity ease;
+
+        &.hide{
+            opacity: 0 !important;
+            transition: 1.25s opacity ease !important;
+            -webkit-transition: 1.25s opacity ease !important;
+            -moz-transition: 1.25s opacity ease !important;
+            -o-transition: 1.25s opacity ease !important;
+            -ms-transition: 1.25s opacity ease !important;
+        }
 
         sub {
             font-weight: lighter;
@@ -65,6 +76,15 @@ html {
         opacity: 0;
         transform: translateX(-50%);
 
+        &.hide{
+            opacity: 0 !important;
+            transition: .35s opacity ease !important;
+            -webkit-transition: .35s opacity ease !important;
+            -moz-transition: .35s opacity ease !important;
+            -o-transition: .35s opacity ease !important;
+            -ms-transition: .35s opacity ease !important;
+        }
+
         p {
             font-size: 14px;
             text-transform: uppercase;
@@ -81,6 +101,15 @@ html {
             background: #fff;
             animation: expand 7s cubic-bezier(0.47, 0, 0.745, 0.715) infinite alternate;
         }
+
+        #sw-det{
+            position: absolute;
+            width: max-content;
+            font-family: 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 0.9rem;
+            font-weight: lighter;
+            transition: all .35s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
     }
 
     #triangle {
@@ -88,10 +117,14 @@ html {
     }
 
     #contact-icons {
-        position: absolute;
+        position: fixed;
         bottom: 50px;
         right: 50px;
         overflow: hidden;
+
+        #open-contact {
+            display: none
+        }
 
         ol {
             // height: 0;
@@ -115,18 +148,21 @@ html {
                     transition: all .45s ease;
                 }
             }
-            li:nth-child(3){
-                a{
+
+            li:nth-child(3) {
+                a {
                     transition: .45s all .2s ease;
                 }
             }
-            li:nth-child(2){
-                a{
+
+            li:nth-child(2) {
+                a {
                     transition: .45s all .1s ease;
                 }
             }
-            li:nth-child(1){
-                a{
+
+            li:nth-child(1) {
+                a {
                     transition: all .45s ease;
                 }
             }
@@ -211,6 +247,7 @@ html {
             }
         }
     }
+
 }
 
 // Keyframe animations
@@ -251,6 +288,9 @@ html {
     #home {
         .home-mess {
             opacity: 1;
+            transition: 1.25s opacity 3s ease;
+            -webkit-transition: 1.25s opacity 3s ease;
+            -moz-transition: 1.25s opacity 3s ease;
         }
     }
 
@@ -266,8 +306,38 @@ html {
 
 
 // Responsiveness
+@media only screen and (min-width: 768px) {
+    #home {
+        #contact-icons {
+            ol {
+                li {
+
+                    a {
+                        transform: translate(-50%, -50%) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 768px) {
-    #home {}
+    #home {
+        #contact-icons {
+            #open-contact {
+                display: block;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 441px) {
+    #home {
+        #contact-icons {
+            bottom: 35px;
+            right: 35px;
+        }
+    }
 }
 
 // 

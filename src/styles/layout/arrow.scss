@@ -4,15 +4,16 @@
     position: relative;
 
     &.with-border::before {
-        width: 25px;
-        height: 25px;
+        width: 45px;
+        height: 45px;
         position: absolute;
         content: "";
         left: 50%;
         top: 50%;
         transform: translate(-50%, -55%);
-        border-radius: 25px;
+        border-radius: 30px;
         border: 1px solid #777;
+        transition: all .35s ease-in-out;
     }
 
     &.arrow-down {
@@ -23,6 +24,14 @@
         // &.with-border::before {
         //     transform: translate(-39%, -47%);
         // }
+    }
+
+    &:hover {
+        &.with-border::before {
+            width: 65px;
+            height: 65px;
+            border-radius: 50px;
+        }
     }
 
     // &.arrow-up {

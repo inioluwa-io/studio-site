@@ -17,9 +17,9 @@
 * {
     cursor: url('../../images/gatsby-icon.png'), none;
 }
-
 #ripple {
     position: absolute;
+    position: fixed;
     width: 200px;
     opacity: 0;
     right: 120px;
@@ -29,9 +29,9 @@
     background: radial-gradient(circle at 80% 137%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     // background: radial-gradient(#0c0c0c, #050505);
     // will-change: transform;
-    transition:  all 1.25s, 1.3s opacity 3.5s  ease;
-    -webkit-transition: all 1.25s, 1.3s opacity 3.5s  ease;
-    -moz-transition: all 1.25s, 1.3s opacity 3.5s  ease;
+    transition: all 1.25s, 1.3s opacity 3.5s, transform 3s ease;
+    -webkit-transition: all 1.25s, 1.3s opacity 3.5s, transform 3s ease;
+    -moz-transition: all 1.25s, 1.3s opacity 3.5s, transform 3s ease;
     mix-blend-mode: difference;
     border-radius: 300px;
     filter: blur(38px) saturate(240%);
@@ -43,11 +43,27 @@
     display: block;
     will-change: transform;
     z-index: -1;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    -moz-backface-visibility: visible;
+    -ms-backface-visibility: visible;
+    perspective: 1000;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
 }
 
-.page-loaded{
-    #ripple{
+#ripple.right{
+    transform: translate(-55%, -90%);
+}
+#ripple.show-contact-left{
+    transform: translate(-355%, -90%);
+}
+
+.page-loaded {
+    #ripple {
         opacity: 1;
+        // background: url('../../images/gatsby-icon.png');
     }
 }
 

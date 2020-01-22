@@ -8,21 +8,27 @@ const Navbar = () => {
     const navBtn = document.querySelector("#nav-btn")
 
     navBtn.addEventListener("mouseover", function(e) {
-      const cursor = document.getElementById("cursor")
+      const desktopCursor = document.querySelector(".isnotmobile #cursor")
       // cursor.style.display = "none"
-      cursor.style.width = "50px"
-      cursor.style.height = "50px"
-      cursor.style.border = "1px solid #fff"
-      cursor.style.background = "transparent"
+
+      if (desktopCursor) {
+        desktopCursor.style.width = "50px"
+        desktopCursor.style.height = "50px"
+        desktopCursor.style.border = "1px solid #fff"
+        desktopCursor.style.background = "transparent"
+      }
     })
 
     navBtn.addEventListener("mouseout", function(e) {
-      const cursor = document.getElementById("cursor")
+      const desktopCursor = document.querySelector(".isnotmobile #cursor")
       // cursor.style.display = "block"
-      cursor.style.width = "10px"
-      cursor.style.height = "10px"
-      cursor.style.border = "1px solid transparent"
-      cursor.style.background = "#fff"
+
+      if (desktopCursor) {
+        desktopCursor.style.width = "10px"
+        desktopCursor.style.height = "10px"
+        desktopCursor.style.border = "1px solid transparent"
+        desktopCursor.style.background = "#fff"
+      }
     })
   })
 
@@ -33,13 +39,13 @@ const Navbar = () => {
     const navTarget = document.querySelector("nav")
     const navLinks = document.querySelectorAll("#nav-target ul#nav-link li")
 
-    const navOpen = (index) => {
+    const navOpen = index => {
       //animate each navlinks with delay
       for (let index = navLinks.length - 1; index >= 0; index--) {
         navLinks[index].classList.remove("active")
         navLinks[index].style.opacity = "0"
         navLinks[index].style.transition = ` .35s all ${0 +
-          ((navLinks.length - 1 - index) / 4.5)}s ease-in-out`
+          (navLinks.length - 1 - index) / 4.5}s ease-in-out`
         navLinks[index].style.transform = "translateY(15px)"
       }
       navLinks[index].classList.add("active")
@@ -147,15 +153,15 @@ const Navbar = () => {
           <ul id="nav-link">
             <li className="active">
               <sub>01</sub>
-              <a href="#" onClick={() => window.location.reload()}>
+              <a href="/" onClick={() => window.location.reload()}>
                 <h3>Intro</h3>
               </a>
             </li>
             <li>
               <sub>02</sub>
-              <Link to="/">
+              <a href="#about-us">
                 <h3>About</h3>
-              </Link>
+              </a>
             </li>
             <li>
               <sub>03</sub>
